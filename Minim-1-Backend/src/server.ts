@@ -8,6 +8,7 @@ import cors from "cors";
 import indexRoutes from "./routes/indexRoutes";
 import postsRoutes from "./routes/usersRoutes";
 import eventRoutes from "./routes/eventRoutes";
+import denunciaRoutes from "./routes/denunciaRoutes";
 
 const MONGO_URI = "mongodb://localhost/tsapi";
 mongoose
@@ -27,6 +28,7 @@ app.use(cors());
 app.use(indexRoutes);
 app.use("/api/users", postsRoutes);
 app.use("/api/events", eventRoutes);
+app.use("/api/denuncias", denunciaRoutes);
 
 app.listen(app.get("port"), () =>
   console.log("Server listening on port ", app.get("port"))
