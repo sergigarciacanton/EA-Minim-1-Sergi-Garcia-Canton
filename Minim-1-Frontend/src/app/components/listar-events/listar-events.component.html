@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="title">LLISTAT D'EVENTS</span>
+          <!--<button class="btn btn-success float-end" routerLink="/crear-event">
+            NOU EVENT
+          </button>-->
+          <table *ngIf="listEvents.length > 0" class="table table-striped mt-3">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Admin</th>
+                <th scope="col">Creation date</th>
+                <th scope="col">Category</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let event of listEvents">
+                <td>{{ event.name }}</td>
+                <td>{{ event.description }}</td>
+                <td>{{ event.admin.name }}</td>
+                <td>{{ event.creationDate }}</td>
+                <td>{{ event.category }}</td>
+                <td>
+                  <!--<i
+                    [routerLink]="['/editar-event', user.name]"
+                    class="fa-solid fa-pen-to-square text-primary"
+                  ></i>-->
+                  <i
+                    (click)="deleteEvent(event._id)"
+                    class="fa-solid fa-trash text-danger"
+                  ></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h5
+            style="text-align: start; margin-top: 10px"
+            *ngIf="listEvents.length == 0"
+          >
+            No hi ha events a la base de dades
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

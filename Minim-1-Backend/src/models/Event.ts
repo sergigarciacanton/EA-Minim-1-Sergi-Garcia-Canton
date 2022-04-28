@@ -1,0 +1,11 @@
+import { Schema, model } from "mongoose";
+
+const EventSchema = new Schema({
+  name: { type: String, required: true },
+  description: { type: String },
+  admin: { type: Schema.Types.ObjectId, ref: "User", required: true },
+  creationDate: { type: Date, default: Date.now, required: true },
+  usersList: { type: [Schema.Types.ObjectId], ref: "User" },
+  category: { type: String, required: true },
+});
+export default model("Event", EventSchema);
